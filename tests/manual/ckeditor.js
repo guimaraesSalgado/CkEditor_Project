@@ -1,0 +1,20 @@
+/**
+ * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+/* globals window, document, console */
+
+import ClassicEditor from '../../build/ckeditor';
+
+ClassicEditor.create( document.querySelector( '#editor' ) )
+	.then( editor => {
+		window.editor = editor;
+		editor.keystrokes.set( 'tab', ( data, stop ) => {
+			editor.execute( 'indent' )
+			stop();
+		} );
+	} )
+	.catch( error => {
+		console.error( 'There was a problem initializing the editor.', error );
+	} );

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>CKEditor 5 – classic editor build – development sample</title>
+	<style>
+		body {
+			max-width: 800px;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>CKEditor 5 – classic editor build – development sample</h1>
+
+	<div id="editor">
+		<p>A Sua Excelência o(a)</p>
+		<p>Doutor (a) <span class="restricted-editing-exception"><strong>Rodrigo Teixeira</strong></span><br>
+			Delegado (a) de Polícia <span class="restricted-editing-exception"><strong>Marcelo Rocha</strong></span></p>
+		<br>
+		<p>Referente: Ordem de serviço nº <span
+				class="restricted-editing-exception"><strong>123600/2020</strong></span>, Inquérito Policial nº <span
+				class="restricted-editing-exception"><strong>114/2020</strong></span>
+		</p>
+		<br>
+		<p>Natureza da Ocorrência:<span class="restricted-editing-exception"><strong> Roubo seguido de
+					morte</strong></span></p>
+		<br>
+		 <figure class="image">
+        <img src="https://via.placeholder.com/1000x300/02c7cd/fff?text=Placeholder%20image" alt="CKEditor 5 rocks!">
+    </figure>
+		<p>São paulo,<span class="restricted-editing-exception"><strong> 29 </strong></span>de <span
+				class="restricted-editing-exception"><strong>Maio </strong></span>de<span
+				class="restricted-editing-exception"><strong> 2020</strong></span>
+			<br>
+			Senhor Delegado de Polícia:<span class="restricted-editing-exception"><strong> Marcelo Rocha</strong></span>
+		</p>
+		<br>
+		<p>Em cumprimento à Ordem de Serviço nº <span
+				class="restricted-editing-exception"><strong>123600/2020</strong></span> referente ao Inquérito
+			Policial nº
+			<span class="restricted-editing-exception"><strong>114/2020</strong></span>, informe a Vossa Excelência que
+			está investigação <span class="restricted-editing-exception">Digite o complemento deste documento</span></p>
+		<br>
+		<p>Respeitosamente,</p>
+		<p style="-webkit-user-modify: read-only;"><strong>Investigador de Polícia</strong>.</p>
+	</div>
+	<div id="word-count"></div>
+
+	<script src="../build/ckeditor.js"></script>
+	<script>
+		ClassicEditor.create(document.querySelector('#editor'))
+			.then(editor => {
+				window.editor = editor;
+				const wordCountPlugin = editor.plugins.get('WordCount');
+				const wordCountWrapper = document.getElementById('word-count');
+				wordCountWrapper.appendChild(wordCountPlugin.wordCountContainer);
+				// editor.keystrokes.set( 'tab', ( data, stop ) => {
+				// 	editor.execute( 'indent' )
+				// 	stop();
+				// } );
+			})
+			.catch(error => {
+				console.error('There was a problem initializing the editor.', error);
+			});
+	</script>
+
+</body>
+
+</html>
